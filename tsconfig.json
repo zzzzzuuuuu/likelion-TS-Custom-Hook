@@ -1,14 +1,26 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "Node",
-    "target": "ESNext", //ES 가장 최신버전
-    "noImplicitAny": false, //암시적 any 금지 -> 안주면 any되는거 방지
-    "removeComments": true, //변환할때 주석 없애기
-    "outDir": "dist", //변환된 파일 어디로 보낼것인가.
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "jsx": "preserve"
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": ["src/**/*"], //이 안에 있는 폴더를 변경할 예정이에요
-  "exclude": ["node_modules", "**/*.spec.ts"] //얘네는 상관 없음
+  "include": [
+    "src"
+  ]
 }
