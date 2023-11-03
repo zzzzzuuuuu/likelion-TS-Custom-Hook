@@ -2,22 +2,7 @@ import styled from 'styled-components';
 
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
-interface MovieData {
-  title: string;
-  release_date: string;
-  original_language: string;
-  vote_average: number;
-  poster_path: string;
-  first_air_date: string;
-  name: string;
-}
-
-interface ContentProps {
-  content: MovieData;
-  rank: number;
-}
-
-const Content = ({ content, rank }: ContentProps) => {
+const Content = ({ content, rank }) => {
   const {
     title,
     release_date,

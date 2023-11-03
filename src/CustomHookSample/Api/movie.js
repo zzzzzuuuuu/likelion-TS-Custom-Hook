@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-export interface MovieListRequest {
-  option: string;
-}
-
-export const viewMovieList = async ({ option }: MovieListRequest) => {
+export const viewMovieList = async ({ option }) => {
   try {
     const res = await axios.get(
       `https://api.themoviedb.org/3/movie/${option}?language=en-US&page=1`,
