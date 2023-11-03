@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Content from './Content';
-import { viewMovieList } from './Api';
+import { getMovieList } from './Api';
 
 const List = ({ option, listText }) => {
   const [movies, setMovies] = useState();
 
   const fetchData = async (option) => {
-    setMovies(await viewMovieList({ option }));
+    setMovies(await getMovieList({ option }));
   };
 
   useEffect(() => {
@@ -16,15 +16,7 @@ const List = ({ option, listText }) => {
 
   return (
     <>
-      <ListText
-        style={{
-          paddingLeft: '8px',
-          marginTop: '48px',
-          marginBottom: '2px',
-        }}
-      >
-        {listText}
-      </ListText>
+      <ListText>{listText}</ListText>
       <ListBlock>
         {movies &&
           movies.map((movie, index) => (
