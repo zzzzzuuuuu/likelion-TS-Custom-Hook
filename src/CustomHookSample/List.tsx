@@ -4,12 +4,22 @@ import Content from './Content';
 import { getMovieList } from './Api';
 
 interface ListItem {
-  option: string;
+  option: "now_playing"|"popular"|"top_rated"|"upcoming";
   listText: string;
 }
 
+interface Movie {
+  title: string;
+  release_date: string;
+  original_language: string;
+  vote_average: number;
+  poster_path: string;
+  first_air_date: string;
+  name: string;
+}
+
 const List = ({ option, listText }: ListItem) => {
-  const [movies, setMovies] = useState<[]>();
+  const [movies, setMovies] = useState<Movie[]>();
 
   const fetchData = async (option: string) => {
     setMovies(await getMovieList({ option }));

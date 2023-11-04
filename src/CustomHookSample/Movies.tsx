@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import List from './List';
 
 interface CategoriesItem {
-  name: string;
+  name: "now_playing"|"popular"|"top_rated"|"upcoming";
   text: string;
 }
 

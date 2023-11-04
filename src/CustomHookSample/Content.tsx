@@ -2,16 +2,17 @@ import styled from 'styled-components';
 
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
+interface Movie {
+  title: string;
+  release_date: string;
+  original_language: string;
+  vote_average: number;
+  poster_path: string;
+  first_air_date: string;
+  name: string;
+}
 interface ContentItem {
-  content: {
-    title: string;
-    release_date: string;
-    original_language: string;
-    vote_average: number;
-    poster_path: string;
-    first_air_date: string;
-    name: string;
-  }
+  content: Movie;
   rank: number;
 }
 const Content = ({ content, rank }: ContentItem) => {
