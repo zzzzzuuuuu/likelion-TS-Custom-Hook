@@ -3,10 +3,15 @@ import styled from 'styled-components';
 import Content from './Content';
 import { getMovieList } from './Api';
 
-const List = ({ option, listText }) => {
-  const [movies, setMovies] = useState();
+interface ListItem {
+  option: string;
+  listText: string;
+}
 
-  const fetchData = async (option) => {
+const List = ({ option, listText }: ListItem) => {
+  const [movies, setMovies] = useState<[]>();
+
+  const fetchData = async (option: string) => {
     setMovies(await getMovieList({ option }));
   };
 

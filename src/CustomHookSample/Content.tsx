@@ -2,7 +2,19 @@ import styled from 'styled-components';
 
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
-const Content = ({ content, rank }) => {
+interface ContentItem {
+  content: {
+    title: string;
+    release_date: string;
+    original_language: string;
+    vote_average: number;
+    poster_path: string;
+    first_air_date: string;
+    name: string;
+  }
+  rank: number;
+}
+const Content = ({ content, rank }: ContentItem) => {
   const {
     title,
     release_date,

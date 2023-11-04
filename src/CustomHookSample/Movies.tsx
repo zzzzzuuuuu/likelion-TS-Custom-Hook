@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import List from './List';
 
-const categories = [
+interface CategoriesItem {
+  name: string;
+  text: string;
+}
+
+const categories: CategoriesItem[] = [
   {
     name: 'now_playing',
     text: '박스 오피스 순위',
