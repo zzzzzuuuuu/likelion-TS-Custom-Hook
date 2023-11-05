@@ -1,12 +1,12 @@
 import axios from 'axios';
-
+import { GetMoviesPayload, Movie } from '../GetMoviesPayload';
 interface GetMovieListProps {
   option: string
 }
 
-export const getMovieList = async ({ option }: GetMovieListProps) => {
-  try {
-    const res = await axios.get(
+
+export const getMovieList = async ({ option }: GetMovieListProps): Promise<Movie[]> => {
+    const res = await axios.get<GetMoviesPayload>(
       `https://api.themoviedb.org/3/movie/${option}?language=en-US&page=1`,
       {
         headers: {
@@ -16,8 +16,4 @@ export const getMovieList = async ({ option }: GetMovieListProps) => {
       }
     );
     return res.data.results;
-  } catch (e) {
-    if (e instanceof Error) {
-    }
-  }
 };

@@ -2,26 +2,27 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Content from './Content';
 import { getMovieList } from './Api';
-
+import { CategoryName } from './Movies';
+import { Movie } from './GetMoviesPayload';
 interface ListItem {
-  option: "now_playing"|"popular"|"top_rated"|"upcoming";
+  option: CategoryName;
   listText: string;
 }
 
-interface Movie {
-  title: string;
-  release_date: string;
-  original_language: string;
-  vote_average: number;
-  poster_path: string;
-  first_air_date: string;
-  name: string;
-}
+// interface Movie {
+//   title: string;
+//   release_date: string;
+//   original_language: string;
+//   vote_average: number;
+//   poster_path: string;
+//   first_air_date: string;
+//   name: string;
+// }
 
 const List = ({ option, listText }: ListItem) => {
-  const [movies, setMovies] = useState<Movie[]>();
+  const [movies, setMovies] = useState<Movie[]>([]);
 
-  const fetchData = async (option: string) => {
+  const fetchData = async (option: CategoryName) => {
     setMovies(await getMovieList({ option }));
   };
 

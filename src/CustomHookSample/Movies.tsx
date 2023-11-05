@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import List from './List';
 
+export type CategoryName = "now_playing"|"popular"|"top_rated"|"upcoming";
 interface CategoriesItem {
-  name: "now_playing"|"popular"|"top_rated"|"upcoming";
+  name: CategoryName;
   text: string;
 }
 
