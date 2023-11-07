@@ -15,5 +15,8 @@ export const getMovieList = async ({ option }: GetMovieListProps): Promise<Movie
         },
       }
     );
+    console.log(res);
+    const link = document.location.href;
+    console.log(typeof(link));
     return res.data.results;
 };
