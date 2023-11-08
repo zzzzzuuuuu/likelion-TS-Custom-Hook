@@ -1,41 +1,27 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Content from './Content';
-import { getMovieList } from './Api';
 import { CategoryName } from './Movies';
-import { Movie } from './GetMoviesPayload';
+import useAxios from './Hooks/useHooks';
 interface ListItem {
   option: CategoryName;
   listText: string;
 }
 
-// interface Movie {
-//   title: string;
-//   release_date: string;
-//   original_language: string;
-//   vote_average: number;
-//   poster_path: string;
-//   first_air_date: string;
-//   name: string;
-// }
 
 const List = ({ option, listText }: ListItem) => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const { data, loading } = useAxios({url:`https://api.themoviedb.org/3/movie/${option}?language=en-US&page=1
+`});
 
-  const fetchData = async (option: CategoryName) => {
-    setMovies(await getMovieList({ option }));
-  };
-
-  useEffect(() => {
-    fetchData(option);
-  }, [option]);
+  if (!data || loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <>
       <ListText>{listText}</ListText>
       <ListBlock>
-        {movies &&
-          movies.map((movie, index) => (
+        {data &&
+          data.map((movie, index) => (
             <Content key={index} content={movie} rank={index} />
           ))}
       </ListBlock>
