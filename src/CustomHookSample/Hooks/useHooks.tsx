@@ -4,13 +4,14 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Movie } from '../GetMoviesPayload';
 
 interface PropsType {
   url: string
 }
 
 const useAxios = ({ url }: PropsType) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
